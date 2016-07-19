@@ -87,6 +87,17 @@ public class CashCounter {
         return shoppingItem;
     }
 
+    public void settlement() {
+        Enumeration<String> keys = this.originalShoppingItems.keys();
+        while(keys.hasMoreElements()) {
+            String key = keys.nextElement();
+            ShoppingItem item = discountItem(key, this.originalShoppingItems.get(key));
+            if(item != null) {
+                finalShoppingItems.add(item);
+            }
+        }
+    }
+
     public void printShoppingList() {
         String normalItemsText = "";
         String discount3For2ItemsText = "";
