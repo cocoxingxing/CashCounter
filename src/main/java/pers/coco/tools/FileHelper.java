@@ -93,4 +93,30 @@ public class FileHelper {
             addShoppingItem(itemLine, 1, shoppingItems);
         }
     }
+
+    public static Hashtable<String, Integer> readFileToShoppingItems(String path) {
+        Hashtable<String, Integer> items = new Hashtable<String, Integer>();
+        File file = new File(path);
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(file));
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                if((!line.equals("[")) && (!line.equals("]"))) {
+                    parseShoppingItem(line, items);
+                }
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e1) {
+                }
+            }
+        }
+        return items;
+    }
 }
