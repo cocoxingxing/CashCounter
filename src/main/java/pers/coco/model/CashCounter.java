@@ -86,4 +86,38 @@ public class CashCounter {
         shoppingItem.setDiscountTag(tag);
         return shoppingItem;
     }
+
+    public void printShoppingList() {
+        String normalItemsText = "";
+        String discount3For2ItemsText = "";
+        String discount95ItemsText = "";
+        double totalPrice = 0.0d;
+        double totalDiscountPrice = 0.0d;
+
+        for(ShoppingItem item : finalShoppingItems) {
+            totalPrice += item.getTotalPrice();
+            if(item.getDiscountTag().equals(Consts.DISCOUNT_3_FOR_2_TAG)) {
+                discount3For2ItemsText += "名称：" + item.getName() + "，数量：" + item.getNum() + item.getUnit() + System.getProperty("line.separator");
+                totalDiscountPrice += item.getDiscountPrice();
+            } else if(item.getDiscountTag().equals(Consts.DISCOUNT_95_TAG)) {
+                discount95ItemsText += "名称：" + item.getName() + "，数量：" + item.getNum() + item.getUnit() + "，单价：" + Tools.formatDoubleToStr(item.getPrice()) + "(元)，小计：" + Tools.formatDoubleToStr(item.getTotalPrice()) + "，节省" + Tools.formatDoubleToStr(item.getDiscountPrice()) + "(元)" + System.getProperty("line.separator");
+                totalDiscountPrice += item.getDiscountPrice();
+            } else {
+                normalItemsText += "名称：" + item.getName() + "，数量：" + item.getNum() + item.getUnit() + "，单价：" + Tools.formatDoubleToStr(item.getPrice()) + "(元)，小计：" + Tools.formatDoubleToStr(item.getTotalPrice()) + System.getProperty("line.separator");
+            }
+        }
+        System.out.println("```");
+        System.out.println("***<没钱赚商店>购物清单***");
+        System.out.print(normalItemsText + discount95ItemsText);
+        System.out.println("----------------------");
+        if(!discount3For2ItemsText.equals("")) {
+            System.out.println("买二赠一商品：");
+            System.out.print(discount3For2ItemsText);
+            System.out.println("----------------------");
+        }
+        System.out.println("总计："+ Tools.formatDoubleToStr(totalPrice) + "(元)");
+        System.out.println("节省："+ Tools.formatDoubleToStr(totalDiscountPrice) + "(元)");
+        System.out.println("**********************");
+        System.out.println("```");
+    }
 }
