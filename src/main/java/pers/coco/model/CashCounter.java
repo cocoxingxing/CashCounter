@@ -50,4 +50,8 @@ public class CashCounter {
         discountThreeForTwo = FileHelper.getDiscountCommoditiesByTag(Consts.DISCOUNT_3_FOR_2_TAG);
         discount95 = FileHelper.getDiscountCommoditiesByTag(Consts.DISCOUNT_95_TAG);
     }
+
+    public void loadCommodities() {
+        commodities = FileHelper.getCommodities(Consts.DB_FILE_PATH);
+    }
 }
