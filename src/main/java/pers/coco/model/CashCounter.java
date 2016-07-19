@@ -5,6 +5,9 @@ import java.util.Hashtable;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+import pers.coco.tools.FileHelper;
+import pers.coco.commons.Consts;
+
 /**
  * Created by Administrator on 2016/7/19.
  */
@@ -41,5 +44,10 @@ public class CashCounter {
 
     public Set<ShoppingItem> getFinalShoppingItems() {
         return this.finalShoppingItems;
+    }
+
+    public void loadDiscountSetting() {
+        discountThreeForTwo = FileHelper.getDiscountCommoditiesByTag(Consts.DISCOUNT_3_FOR_2_TAG);
+        discount95 = FileHelper.getDiscountCommoditiesByTag(Consts.DISCOUNT_95_TAG);
     }
 }
