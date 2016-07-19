@@ -1,11 +1,5 @@
 package pers.coco.tools;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
-import pers.coco.commons.Consts;
-import pers.coco.model.Commodity;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -14,6 +8,13 @@ import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Set;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+
+import pers.coco.commons.Consts;
+import pers.coco.model.Commodity;
 
 /**
  * Created by Administrator on 2016/7/17.

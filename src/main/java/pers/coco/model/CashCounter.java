@@ -126,8 +126,8 @@ public class CashCounter {
             System.out.print(discount3For2ItemsText);
             System.out.println("----------------------");
         }
-        System.out.println("总计："+ Tools.formatDoubleToStr(totalPrice) + "(元)");
-        System.out.println("节省："+ Tools.formatDoubleToStr(totalDiscountPrice) + "(元)");
+        System.out.println("总计：" + Tools.formatDoubleToStr(totalPrice) + "(元)");
+        System.out.println("节省：" + Tools.formatDoubleToStr(totalDiscountPrice) + "(元)");
         System.out.println("**********************");
         System.out.println("```");
     }
