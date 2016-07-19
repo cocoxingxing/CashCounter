@@ -33,6 +33,7 @@ public class FileHelper {
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();
+            return "";
         } finally {
             if (reader != null) {
                 try {
@@ -65,6 +66,15 @@ public class FileHelper {
             result.add(jsonArray.get(i).toString());
         }
         return result;
+    }
+
+    public static void addShoppingItem(String code, int num, Hashtable<String, Integer> shoppingItems) {
+        if(shoppingItems.containsKey(code)) {
+            int tempNum = shoppingItems.get(code);
+            shoppingItems.put(code, tempNum + num);
+        } else {
+            shoppingItems.put(code, num);
+        }
     }
 
 }

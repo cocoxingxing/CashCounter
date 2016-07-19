@@ -32,4 +32,34 @@ public class FileHelperTest {
         assertEquals(2, discounts.size());
     }
 
+    @Test
+    public void should_return_size_1_when_add_new_item_to_shopping_item() {
+        Hashtable<String, Integer> shoppingItems = new Hashtable<String, Integer>();
+        FileHelper.addShoppingItem("ITEM000001", 1, shoppingItems);
+        assertEquals(1, shoppingItems.size());
+    }
+
+    @Test
+    public void should_return_num_1_when_add_new_item_to_shopping_item() {
+        Hashtable<String, Integer> shoppingItems = new Hashtable<String, Integer>();
+        FileHelper.addShoppingItem("ITEM000001", 1, shoppingItems);
+        assertEquals(1, shoppingItems.get("ITEM000001").intValue());
+    }
+
+    @Test
+    public void should_return_size_1_when_add_exist_item_to_shopping_item() {
+        Hashtable<String, Integer> shoppingItems = new Hashtable<String, Integer>();
+        shoppingItems.put("ITEM000001", 1);
+        FileHelper.addShoppingItem("ITEM000001", 1, shoppingItems);
+        assertEquals(1, shoppingItems.size());
+    }
+
+    @Test
+    public void should_return_num_2_when_add_exist_item_to_shopping_item() {
+        Hashtable<String, Integer> shoppingItems = new Hashtable<String, Integer>();
+        shoppingItems.put("ITEM000001", 1);
+        FileHelper.addShoppingItem("ITEM000001", 1, shoppingItems);
+        assertEquals(2, shoppingItems.get("ITEM000001").intValue());
+    }
+
 }
