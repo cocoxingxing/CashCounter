@@ -11,11 +11,35 @@ import java.util.Set;
 public class CashCounter {
     private Set<String> discountThreeForTwo = new HashSet<String>();
     private Set<String> discount95 = new HashSet<String>();
-    private Hashtable<String, Commodity> dbItems = new Hashtable<String, Commodity>();
+    private Hashtable<String, Commodity> commodities = new Hashtable<String, Commodity>();
     private Hashtable<String, Integer> originalShoppingItems = new Hashtable<String, Integer>();
     private Set<ShoppingItem> finalShoppingItems = new LinkedHashSet<ShoppingItem>();
 
     public CashCounter() {
 
+    }
+
+    public Set<String> getDiscountThreeForTwo() {
+        return this.discountThreeForTwo;
+    }
+
+    public Set<String> getDiscount95() {
+        return this.discount95;
+    }
+
+    public Hashtable<String, Commodity> getCommodities() {
+        return this.commodities;
+    }
+
+    public void setOriginalShoppingItems(Hashtable<String, Integer> originalShoppingItems) {
+        this.originalShoppingItems = originalShoppingItems;
+    }
+
+    public Hashtable<String, Integer> getOriginalShoppingItems() {
+        return this.originalShoppingItems;
+    }
+
+    public Set<ShoppingItem> getFinalShoppingItems() {
+        return this.finalShoppingItems;
     }
 }
