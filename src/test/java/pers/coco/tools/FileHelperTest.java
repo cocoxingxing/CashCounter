@@ -20,4 +20,10 @@ public class FileHelperTest {
         assertEquals("", FileHelper.readFile(filePath));
     }
 
+    @Test
+    public void should_return_size_3_when_get_commodities() {
+        Hashtable<String, Commodity> commodities = FileHelper.getCommodities(Consts.DB_FILE_PATH);
+        assertEquals(3, commodities.size());
+    }
+
 }

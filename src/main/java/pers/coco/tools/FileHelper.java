@@ -43,4 +43,15 @@ public class FileHelper {
         }
         return content;
     }
+
+    public static Hashtable<String, Commodity> getCommodities(String path) {
+        String text = FileHelper.readFile(path);
+        List<Commodity> listCommodities = JSONArray.parseArray(text, Commodity.class);
+
+        Hashtable<String, Commodity> dbItems = new Hashtable<String, Commodity>();
+        for(Commodity commodity : listCommodities) {
+            dbItems.put(commodity.getCode(), commodity);
+        }
+        return dbItems;
+    }
 }
