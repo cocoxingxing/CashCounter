@@ -77,4 +77,20 @@ public class FileHelper {
         }
     }
 
+    public static void parseShoppingItem(String itemLine, Hashtable<String, Integer> shoppingItems) {
+        int startIndex = itemLine.indexOf("'");
+        int endIndex = itemLine.indexOf("'", startIndex + 1);
+        if(startIndex != -1 && endIndex != -1) {
+            itemLine = itemLine.substring(itemLine.indexOf("'") + 1, itemLine.indexOf("'", itemLine.indexOf("'") + 1));
+        } else {
+            return;
+        }
+        if(itemLine.indexOf("-") != -1) {
+            String code = itemLine.substring(0, itemLine.indexOf("-"));
+            int num = Integer.parseInt(itemLine.substring(itemLine.indexOf("-") + 1, itemLine.length()));
+            addShoppingItem(code, num, shoppingItems);
+        } else {
+            addShoppingItem(itemLine, 1, shoppingItems);
+        }
+    }
 }
