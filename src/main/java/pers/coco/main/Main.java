@@ -14,6 +14,9 @@ public class Main {
     public static CashCounter cashCounter = new CashCounter();
 
     public static void main(String[] args) {
-
+        Hashtable<String, Integer> shoppingItems = FileHelper.readFileToShoppingItems(Consts.ITEM_FILE_PATH);
+        cashCounter.setOriginalShoppingItems(shoppingItems);
+        cashCounter.settlement();
+        cashCounter.printShoppingList();
     }
 }
