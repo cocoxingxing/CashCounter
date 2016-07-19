@@ -54,4 +54,17 @@ public class FileHelper {
         }
         return dbItems;
     }
+
+    public static Set<String> getDiscountCommoditiesByTag(String tag) {
+        String text = readFile(Consts.DISCOUNT_FILE_PATH);
+        JSONObject jsonObject = JSON.parseObject(text);
+
+        Set<String> result = new HashSet<String>();
+        JSONArray jsonArray = JSON.parseArray(jsonObject.get(tag).toString());
+        for(int i = 0; i < jsonArray.size(); ++i) {
+            result.add(jsonArray.get(i).toString());
+        }
+        return result;
+    }
+
 }

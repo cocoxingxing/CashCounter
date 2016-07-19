@@ -26,4 +26,10 @@ public class FileHelperTest {
         assertEquals(3, commodities.size());
     }
 
+    @Test
+    public void should_return_size_2_when_get_3for2_discount_commodities() {
+        Set<String> discounts = FileHelper.getDiscountCommoditiesByTag("3for2");
+        assertEquals(2, discounts.size());
+    }
+
 }
