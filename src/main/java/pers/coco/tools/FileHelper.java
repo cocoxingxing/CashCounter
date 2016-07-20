@@ -33,7 +33,7 @@ public class FileHelper {
             }
             reader.close();
         } catch (IOException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             return "";
         } finally {
             if (reader != null) {

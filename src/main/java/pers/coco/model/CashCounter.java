@@ -1,6 +1,10 @@
 package pers.coco.model;
 
-import java.util.*;
+import java.util.Set;
+import java.util.Hashtable;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Enumeration;
 
 import pers.coco.tools.FileHelper;
 import pers.coco.commons.Consts;

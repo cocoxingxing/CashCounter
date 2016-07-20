@@ -1,9 +1,8 @@
 package pers.coco.main;
 
-import pers.coco.model.CashCounter;
-
 import java.util.Hashtable;
 
+import pers.coco.model.CashCounter;
 import pers.coco.tools.FileHelper;
 import pers.coco.commons.Consts;
 

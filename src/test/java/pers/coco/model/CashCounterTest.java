@@ -120,7 +120,7 @@ public class CashCounterTest {
 
     @Test
     public void should_return_size_3_after_settlement_from_shopping_items() {
-        Hashtable<String, Integer> shoppingItems = FileHelper.readFileToShoppingItems(Consts.ITEM_FILE_PATH);
+        Hashtable<String, Integer> shoppingItems = FileHelper.readFileToShoppingItems(Consts.DATA_FOLDER_PATH  + "shoppingItemsWithBothDiscount.txt");
         CashCounter cashCounter = new CashCounter();
         cashCounter.setOriginalShoppingItems(shoppingItems);
         cashCounter.settlement();
