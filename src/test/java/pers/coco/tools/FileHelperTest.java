@@ -1,6 +1,5 @@
 package pers.coco.tools;
 
-import java.io.IOException;
 import java.util.Hashtable;
 import java.util.Set;
 

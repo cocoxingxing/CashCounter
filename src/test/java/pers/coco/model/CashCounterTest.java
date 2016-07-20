@@ -1,12 +1,13 @@
 package pers.coco.model;
 
-import org.junit.Test;
-import pers.coco.commons.Consts;
-import pers.coco.tools.FileHelper;
-
 import java.util.Hashtable;
 
-import static org.junit.Assert.*;
+import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
+import pers.coco.commons.Consts;
+import pers.coco.tools.FileHelper;
 
 /**
  * Created by Administrator on 2016/7/19.
