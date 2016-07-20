@@ -3,6 +3,7 @@ package pers.coco.model;
 /**
  * Created by Administrator on 2016/7/19.
  */
+
 public class Commodity {
     private String name = "";
     private String unit = "";
@@ -37,3 +38,4 @@ public class Commodity {
         return this.unit;
     }
 }
+

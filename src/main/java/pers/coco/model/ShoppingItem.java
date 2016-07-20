@@ -3,6 +3,7 @@ package pers.coco.model;
 /**
  * Created by Administrator on 2016/7/19.
  */
+
 public class ShoppingItem {
     private String name = "";
     private int num = 0;

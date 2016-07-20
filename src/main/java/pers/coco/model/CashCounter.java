@@ -14,6 +14,7 @@ import pers.coco.tools.Tools;
  * Created by Administrator on 2016/7/19.
  */
 public class CashCounter {
+
     private Set<String> discountThreeForTwo = new HashSet<String>();
     private Set<String> discount95 = new HashSet<String>();
     private Hashtable<String, Commodity> commodities = new Hashtable<String, Commodity>();
