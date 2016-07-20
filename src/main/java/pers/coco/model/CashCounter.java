@@ -62,8 +62,8 @@ public class CashCounter {
 
         Enumeration<String> keys = this.commodities.keys();
         Commodity commodity = null;
-        if(commodities.containsKey(code)) {
-            commodity = commodities.get(code);
+        if(this.commodities.containsKey(code)) {
+            commodity = this.commodities.get(code);
         } else {
             return null;
         }
@@ -73,7 +73,7 @@ public class CashCounter {
         shoppingItem.setUnit(commodity.getUnit());
         shoppingItem.setTotalPrice(Tools.formatDouble(num* commodity.getPrice()));
         String tag = Consts.DISCOUNT_NONE_TAG;
-        if(discountThreeForTwo.contains(code) && num >= 3) {
+        if(this.discountThreeForTwo.contains(code) && num >= 3) {
             tag = Consts.DISCOUNT_3_FOR_2_TAG;
             int discountNum = Math.floorDiv(num, 3);
             shoppingItem.setDiscountNum(discountNum);
@@ -93,12 +93,13 @@ public class CashCounter {
     }
 
     public void settlement() {
+        this.finalShoppingItems.clear();
         Enumeration<String> keys = this.originalShoppingItems.keys();
         while(keys.hasMoreElements()) {
             String key = keys.nextElement();
             ShoppingItem item = discountItem(key, this.originalShoppingItems.get(key));
             if(item != null) {
-                finalShoppingItems.add(item);
+                this.finalShoppingItems.add(item);
             }
         }
     }
@@ -110,7 +111,7 @@ public class CashCounter {
         double totalPrice = 0.0d;
         double totalDiscountPrice = 0.0d;
 
-        for(ShoppingItem item : finalShoppingItems) {
+        for(ShoppingItem item : this.finalShoppingItems) {
             totalPrice += item.getTotalPrice();
             if(item.getDiscountTag().equals(Consts.DISCOUNT_3_FOR_2_TAG)) {
                 itemsText += "名称：" + item.getName() + "，数量：" + item.getNum() + item.getUnit() + "，单价：" + Tools.formatDoubleToStr(item.getPrice()) + "(元)，小计：" + Tools.formatDoubleToStr(item.getTotalPrice()) + "(元)" + System.getProperty("line.separator");
@@ -133,8 +134,11 @@ public class CashCounter {
             System.out.println("----------------------");
         }
         System.out.println("总计：" + Tools.formatDoubleToStr(totalPrice) + "(元)");
-        System.out.println("节省：" + Tools.formatDoubleToStr(totalDiscountPrice) + "(元)");
+        if(!Tools.formatDoubleToStr(totalDiscountPrice).equals("0.00")) {
+            System.out.println("节省：" + Tools.formatDoubleToStr(totalDiscountPrice) + "(元)");
+        }
         System.out.println("**********************");
         System.out.println("```");
+        this.finalShoppingItems.clear();
     }
 }
