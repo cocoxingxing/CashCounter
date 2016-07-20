@@ -95,4 +95,10 @@ public class CashCounterTest {
         assertEquals(Consts.DISCOUNT_NONE_TAG, item.getDiscountTag());
         assertEquals(0.0, item.getDiscountPrice(), 0.0001d);
     }
+
+    @Test
+    public void should_return_null_when_discount_nonexist_item() {
+        CashCounter cashCounter = new CashCounter();
+        assertNull(cashCounter.discountItem("ITEM000006", 2));
+    }
 }
