@@ -87,4 +87,12 @@ public class CashCounterTest {
         assertEquals(Consts.DISCOUNT_95_TAG, item.getDiscountTag());
         assertEquals(0.2, item.getDiscountPrice(), 0.0001d);
     }
+
+    @Test
+    public void should_use_no_discount_when_discount_item_ITEM000004_with_num_2() {
+        CashCounter cashCounter = new CashCounter();
+        ShoppingItem item  = cashCounter.discountItem("ITEM000004", 2);
+        assertEquals(Consts.DISCOUNT_NONE_TAG, item.getDiscountTag());
+        assertEquals(0.0, item.getDiscountPrice(), 0.0001d);
+    }
 }

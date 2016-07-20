@@ -16,6 +16,12 @@
     "unit": "个",
     "price": 5.5,
     "code": "ITEM000001"
+  },
+  {
+    "name": "方便面",
+    "unit": "桶",
+    "price": 4.5,
+    "code": "ITEM000004"
   }
 ]
 
