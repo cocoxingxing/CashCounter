@@ -2,6 +2,9 @@ package pers.coco.model;
 
 import org.junit.Test;
 import pers.coco.commons.Consts;
+import pers.coco.tools.FileHelper;
+
+import java.util.Hashtable;
 
 import static org.junit.Assert.*;
 
@@ -113,5 +116,14 @@ public class CashCounterTest {
         CashCounter cashCounter = new CashCounter();
         assertEquals(2, cashCounter.getDiscount95().size());
         assertEquals(2, cashCounter.getDiscountThreeForTwo().size());
+    }
+
+    @Test
+    public void should_return_size_3_after_settlement_from_shopping_items() {
+        Hashtable<String, Integer> shoppingItems = FileHelper.readFileToShoppingItems(Consts.ITEM_FILE_PATH);
+        CashCounter cashCounter = new CashCounter();
+        cashCounter.setOriginalShoppingItems(shoppingItems);
+        cashCounter.settlement();
+        assertEquals(3, cashCounter.getFinalShoppingItems().size());
     }
 }
