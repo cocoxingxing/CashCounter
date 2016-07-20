@@ -55,7 +55,11 @@ public class CashCounter {
     }
 
     public ShoppingItem discountItem(String code, int num) {
+        if(num == 0) {
+            return null;
+        }
         ShoppingItem shoppingItem = new ShoppingItem();
+
         Enumeration<String> keys = this.commodities.keys();
 
         Commodity commodity = null;
