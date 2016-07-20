@@ -101,4 +101,17 @@ public class CashCounterTest {
         CashCounter cashCounter = new CashCounter();
         assertNull(cashCounter.discountItem("ITEM000006", 2));
     }
+
+    @Test
+    public void should_return_size_3_after_load_commodities() {
+        CashCounter cashCounter = new CashCounter();
+        assertEquals(4, cashCounter.getCommodities().size());
+    }
+
+    @Test
+    public void should_return_size_2_for_two_discount_after_load_discount_setting() {
+        CashCounter cashCounter = new CashCounter();
+        assertEquals(2, cashCounter.getDiscount95().size());
+        assertEquals(2, cashCounter.getDiscountThreeForTwo().size());
+    }
 }
