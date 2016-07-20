@@ -6,6 +6,7 @@ package pers.coco.model;
 public class ShoppingItem {
     private String name = "";
     private int num = 0;
+    private int discountNum = 0;
     private double price = 0.0d;
     private String unit = "";
     private double discountPrice = 0.0d;
@@ -24,6 +25,14 @@ public class ShoppingItem {
     }
     public int getNum() {
         return this.num;
+    }
+
+    public void setDiscountNum(int discountNum) {
+        this.discountNum = discountNum;
+    }
+
+    public int getDiscountNum() {
+        return this.discountNum;
     }
 
     public void setPrice(double price) {

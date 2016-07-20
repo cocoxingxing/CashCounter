@@ -61,7 +61,6 @@ public class CashCounter {
         ShoppingItem shoppingItem = new ShoppingItem();
 
         Enumeration<String> keys = this.commodities.keys();
-
         Commodity commodity = null;
         if(commodities.containsKey(code)) {
             commodity = commodities.get(code);
@@ -77,8 +76,10 @@ public class CashCounter {
         if(discountThreeForTwo.contains(code) && num >= 3) {
             tag = Consts.DISCOUNT_3_FOR_2_TAG;
             int discountNum = Math.floorDiv(num, 3);
+            shoppingItem.setDiscountNum(discountNum);
             shoppingItem.setDiscountPrice(Tools.formatDouble(commodity.getPrice() * discountNum));
         }
+
         if(tag.equals(Consts.DISCOUNT_NONE_TAG) && discount95.contains(code)) {
             tag = Consts.DISCOUNT_95_TAG;
             shoppingItem.setDiscountPrice(Tools.formatDouble(commodity.getPrice() * num * 0.05));
@@ -103,31 +104,32 @@ public class CashCounter {
     }
 
     public void printShoppingList() {
-        String normalItemsText = "";
-        String discount3For2ItemsText = "";
-        String discount95ItemsText = "";
+        String itemsText = "";
+        String discount3For2ItemsStr = "";
+
         double totalPrice = 0.0d;
         double totalDiscountPrice = 0.0d;
 
         for(ShoppingItem item : finalShoppingItems) {
             totalPrice += item.getTotalPrice();
             if(item.getDiscountTag().equals(Consts.DISCOUNT_3_FOR_2_TAG)) {
-                discount3For2ItemsText += "名称：" + item.getName() + "，数量：" + item.getNum() + item.getUnit() + System.getProperty("line.separator");
+                itemsText += "名称：" + item.getName() + "，数量：" + item.getNum() + item.getUnit() + "，单价：" + Tools.formatDoubleToStr(item.getPrice()) + "(元)，小计：" + Tools.formatDoubleToStr(item.getTotalPrice()) + "(元)" + System.getProperty("line.separator");
+                discount3For2ItemsStr += "名称：" + item.getName() + "，数量：" + item.getDiscountNum() + item.getUnit() + System.getProperty("line.separator");
                 totalDiscountPrice += item.getDiscountPrice();
             } else if(item.getDiscountTag().equals(Consts.DISCOUNT_95_TAG)) {
-                discount95ItemsText += "名称：" + item.getName() + "，数量：" + item.getNum() + item.getUnit() + "，单价：" + Tools.formatDoubleToStr(item.getPrice()) + "(元)，小计：" + Tools.formatDoubleToStr(item.getTotalPrice()) + "，节省" + Tools.formatDoubleToStr(item.getDiscountPrice()) + "(元)" + System.getProperty("line.separator");
+                itemsText += "名称：" + item.getName() + "，数量：" + item.getNum() + item.getUnit() + "，单价：" + Tools.formatDoubleToStr(item.getPrice()) + "(元)，小计：" + Tools.formatDoubleToStr(item.getTotalPrice()) + "(元)，节省" + Tools.formatDoubleToStr(item.getDiscountPrice()) + "(元)" + System.getProperty("line.separator");
                 totalDiscountPrice += item.getDiscountPrice();
             } else {
-                normalItemsText += "名称：" + item.getName() + "，数量：" + item.getNum() + item.getUnit() + "，单价：" + Tools.formatDoubleToStr(item.getPrice()) + "(元)，小计：" + Tools.formatDoubleToStr(item.getTotalPrice()) + System.getProperty("line.separator");
+                itemsText += "名称：" + item.getName() + "，数量：" + item.getNum() + item.getUnit() + "，单价：" + Tools.formatDoubleToStr(item.getPrice()) + "(元)，小计：" + Tools.formatDoubleToStr(item.getTotalPrice()) + "(元)" + System.getProperty("line.separator");
             }
         }
         System.out.println("```");
         System.out.println("***<没钱赚商店>购物清单***");
-        System.out.print(normalItemsText + discount95ItemsText);
+        System.out.print(itemsText);
         System.out.println("----------------------");
-        if(!discount3For2ItemsText.equals("")) {
+        if(!discount3For2ItemsStr.equals("")) {
             System.out.println("买二赠一商品：");
-            System.out.print(discount3For2ItemsText);
+            System.out.print(discount3For2ItemsStr);
             System.out.println("----------------------");
         }
         System.out.println("总计：" + Tools.formatDoubleToStr(totalPrice) + "(元)");

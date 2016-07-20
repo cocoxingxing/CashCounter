@@ -14,7 +14,7 @@ public class Main {
     public static CashCounter cashCounter = new CashCounter();
 
     public static void main(String[] args) {
-        Hashtable<String, Integer> shoppingItems = FileHelper.readFileToShoppingItems(Consts.ITEM_FILE_PATH);
+        Hashtable<String, Integer> shoppingItems = FileHelper.readFileToShoppingItems("././data/shoppingItemsWithDiscount3for2.txt");
         cashCounter.setOriginalShoppingItems(shoppingItems);
         cashCounter.settlement();
         cashCounter.printShoppingList();
